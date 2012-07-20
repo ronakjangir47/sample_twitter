@@ -1,4 +1,16 @@
 SampleTwitter::Application.routes.draw do
+  
+  
+  root :to => 'static_pages#home'
+
+  match 'help' => 'static_pages#help'
+
+  match 'about' => 'static_pages#about'
+
+  resources :users
+
+  match 'signin' => 'users#new'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

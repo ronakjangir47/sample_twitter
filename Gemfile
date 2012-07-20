@@ -23,6 +23,7 @@ end
 
 gem 'therubyracer'
 gem 'jquery-rails'
+gem 'bootstrap-sass','2.0.0'
 
 group :test do
 	gem 'capybara','1.1.2'
