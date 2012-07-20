@@ -20,13 +20,17 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
 gem 'annotate', '~> 2.4.1.beta', group: :development
+
 gem 'therubyracer'
 gem 'jquery-rails'
 gem 'bootstrap-sass','2.0.0'
+gem 'bcrypt-ruby'
 
 group :test do
 	gem 'capybara','1.1.2'
+  gem 'factory_girl_rails', '1.4.0'
 end
 
 group :production do
@@ -34,7 +38,7 @@ group :production do
 end
 
 # To use ActiveModel has_secure_password
- gem 'bcrypt-ruby', '~> 3.0.0'
+ 
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
