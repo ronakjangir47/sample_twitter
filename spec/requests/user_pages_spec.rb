@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "UserPages" do
   subject {page}
   describe "Sign Up Page" do
-    before {visit '/signin'}
+    before {visit '/signup'}
     it { should have_selector('title', :text => "Sample Twitter | Sign Up" ) }
     it { should have_content('Sample Twitter') }
   end
@@ -16,7 +16,7 @@ describe "UserPages" do
   end
 
   describe "Test User creation" do
-    before {visit '/signin'}
+    before {visit '/signup'}
     let(:submit){"Create my account"}
     describe "with invalid details" do
       it { expect { click_button submit}.not_to change(User, :count) }
