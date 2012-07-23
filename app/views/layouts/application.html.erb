@@ -19,7 +19,7 @@
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Help", help_path %></li>
             <%      if signed_in? %>
-              <li><%= link_to "Users", '#' %></li>
+              <li><%= link_to "Users", users_path %></li>
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Account <b class="caret"></b>
@@ -40,6 +40,7 @@
         </nav>
       </div>
     </div>
+  </header>
     <div class="container">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
