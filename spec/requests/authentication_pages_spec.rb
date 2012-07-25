@@ -48,9 +48,20 @@ describe "AuthenticationPages" do
           before { put user_path(user) }
           specify { response.should redirect_to(signin_path) }
         end
+
+        describe "visiting the following page" do
+          before { visit following_user_path(user) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "visiting the followers page" do
+          before { visit followers_user_path(user) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
       end
     end
   end
+
 
   describe "authorization" do
     describe "for non-signed-in users" do
