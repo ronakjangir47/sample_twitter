@@ -1,0 +1,7 @@
+<% if !current_user.retweets.find_by_micropost_id(feed_item_id) %>
+  <%= link_to 'Retweet','', id: "retweet_#{feed_item_id}",class: "tweet_opr" %>
+<% else %>
+  Retweeted
+<% end %>
+<%= link_to 'Reply','#', id: "reply_#{feed_item_id}",class: "tweet_opr"%>
+<%= link_to 'Favorite','#',id: "favorite_#{feed_item_id}",class: "tweet_opr"%>

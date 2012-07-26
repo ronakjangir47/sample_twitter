@@ -49,6 +49,13 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def search
+    q = "%example%"
+    @users = User.where("name Like ? ", q).paginate(page: params[:page])
+    redirect_to '/users'
+  end
+
+
   def following
     @title = "Following"
     @user = User.find(params[:id])

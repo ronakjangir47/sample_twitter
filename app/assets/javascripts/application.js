@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+
+$(document).ready(function(){
+  $(".microposts li a.tweet_opr").click(function() {
+     target_id = this.id.split('_');
+     $('#retweet_micropost_id').val(target_id[1])
+     $('#'+target_id[0]+'_form #micropost_content').html($('.microposts li#'+target_id[1]+' span.content').html())
+     $('#'+target_id[0]+'_form').css('display','block') ;
+     return false
+  });
+  $("#retweet_cancel").click(function(){
+    //alert('#'+this.id.split('_')[0]+'_form')
+    $('#retweet_form').css('display','none');
+  })
+});
+
