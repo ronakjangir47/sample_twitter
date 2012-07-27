@@ -1,0 +1,2 @@
+$("#div_"+<%= @micropost_id %>).html("<%= escape_javascript(render :partial => 'shared/tweet_status', :locals => {feed_item_id: @micropost_id}) %>")
+$("#retweet_form").css('display','none');

@@ -1,0 +1,12 @@
+<div id="retweet_form" style="width:400px; height:200px; border:solid 10px gray; position:fixed; attachment:fixed; top:20%; left:30%; background-color:white; display: none">
+  <%= form_for(current_user.retweets.build(micropost_id: 2), remote: true)  do |f| %>
+    <div style="height:125px; padding: 15px;">
+      <span id="micropost_content">  </span>
+    </div>
+    <%= f.hidden_field :micropost_id %>
+    <div style="float: right; padding-right: 15px;">
+      <%= f.submit "Retweet", class: "btn btn-large btn-primary" %>
+      <input type="button" id="retweet_cancel" value="Cancel" class="btn btn-large btn-primary"/>
+    </div>
+  <% end %>
+</div>

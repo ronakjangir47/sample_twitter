@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-   
     if @user.save
       sign_in @user
       flash[:success] = 'Welcome Sample Twitter'
@@ -47,6 +46,11 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = 'Successfully deleted'
     redirect_to users_path
+  end
+
+  def search
+    q = "%"+params[:search_content]+"%"
+    @users = User.where("name Like ? ", q).paginate(page: params[:page])
   end
 
   def following
