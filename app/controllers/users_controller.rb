@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-   
     if @user.save
       sign_in @user
       flash[:success] = 'Welcome Sample Twitter'
@@ -50,11 +49,9 @@ class UsersController < ApplicationController
   end
 
   def search
-    q = "%example%"
+    q = "%"+params[:search_content]+"%"
     @users = User.where("name Like ? ", q).paginate(page: params[:page])
-    redirect_to '/users'
   end
-
 
   def following
     @title = "Following"

@@ -24,7 +24,7 @@ SampleTwitter::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :retweets, only: [:create]
 
-  put "search" => 'users#search'
+  get "search" => 'users#search'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
