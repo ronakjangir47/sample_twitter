@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sample Twitter | <%= yield(:title)%> </title>
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-  </head>
-  <body>
-  <header class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <%= link_to "sample Twitter", root_path, id: "logo" %>
-        <div class="search-box">
-          <%= form_tag(search_path, method: 'get') do %>
-            <%= text_field_tag :search_content %>
-            <%= submit_tag 'Search', class: " btn-large btn-primary" %>
-          <% end %>
-        </div>
-        <nav>
-          <ul class="nav pull-right">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Help", help_path %></li>
-            <%      if signed_in? %>
-              <li><%= link_to "Users", users_path %></li>
-              <li id="fat-menu" class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Account <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><%= link_to "Profile", current_user %></li>
-                  <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-                  <li class="divider"></li>
-                  <li>
-                    <%= link_to "Sign out", signout_path, method: "delete" %>
-                  </li>
-                </ul>
-              </li>
-            <% else %>
-              <li><%= link_to "Sign in", signin_path %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-      <%= yield %>
-    </div>
-    <%= render 'layouts/footer' %>
-    <%= debug(params) if Rails.env.development? %>
-  </body>
+	<head>
+		<title>Sample Twitter | <%= yield(:title)%> </title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<!--[if lt IE 9]>
+		  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+	<header class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<%= link_to "sample Twitter", root_path, id: "logo" %>
+				<% if signed_in? %>
+					<div class="search-box">
+						<%= form_tag(search_path, method: 'get') do %>
+				  		<%= text_field_tag :search_content %>
+							<%= submit_tag 'Search', class: " btn-large btn-primary" %>
+						<% end %>
+					</div>
+				<% end %>
+				<nav>
+					<ul class="nav pull-right">
+						<li><%= link_to "Home", root_path %></li>
+						<li><%= link_to "Help", help_path %></li>
+						<% if signed_in? %>
+							<li><%= link_to "Users", users_path %></li>
+							<li id="fat-menu" class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									Account <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><%= link_to "Profile", current_user %></li>
+									<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+									<li class="divider"></li>
+									<li>
+										<%= link_to "Sign out", signout_path, method: "delete" %>
+									</li>
+								</ul>
+							</li>
+						<% else %>
+							<li><%= link_to "Sign in", signin_path %></li>
+						<% end %>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+		<div class="container">
+			<% flash.each do |key, value| %>
+				<div class="alert alert-<%= key %>"><%= value %></div>
+			<% end %>
+			<%= yield %>
+		</div>
+		<%= render 'layouts/footer' %>
+		<%= debug(params) if Rails.env.development? %>
+	</body>
 </html>
